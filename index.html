@@ -51,17 +51,24 @@
 </body>
 <script>
     $(document).ready(function () {
-        var ground = ['子', '丑', '寅', '卯', '辰', '巳', 
-        '午', '未', '申', '酉', '戌', '亥'];
+        var ground1 = ['紫微', '天機', ' ', '太陽', '武曲', '天同', 
+        ' ', ' ', '廉貞', ' ', ' ', ' '];
+        var ground2= ['天府', '太陰', '貪狼', '巨門', '天相', '天梁', '七殺',
+         ' ', ' ', ' ', '破軍', ' ', ' '];
         var init = ['0', '1', '2', '3', '4', '5', '6', 
         '7', '8', '9', '10', '11'];
         $('td').hover(function () {
             x = parseInt($(this).attr('id'));
+            var origin = x;
             x = (12 - x) % 12;
             $('#' + x.toString()).addClass('symmetry');
             for(let i=0; i<12; i++){
+                let offset = (12+(origin-i))%12;
+                $('#'+i.toString()).text(ground1[offset]);
+            }
+            for(let i=0; i<12; i++){
                 let offset = (x+i)%12;
-                $('#'+i.toString()).text(ground[offset]);
+                $('#'+i.toString()).append(' '+ground2[offset]);
             }
         },
         function(){

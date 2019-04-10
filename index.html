@@ -67,7 +67,7 @@
                 $('#'+i.toString()).text(ground1[offset]);
             }
             for(let i=0; i<12; i++){
-                let offset = (12-(origin-i))%12;
+                let offset = (12-(x-i))%12;
                 $('#'+i.toString()).append(' '+ground2[offset]);
             }
         },

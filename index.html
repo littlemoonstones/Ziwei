@@ -51,11 +51,24 @@
 </body>
 <script>
     $(document).ready(function () {
-
+        var ground = ['子', '丑', '寅', '卯', '辰', '巳', 
+        '午', '未', '申', '酉', '戌', '亥'];
+        var init = ['0', '1', '2', '3', '4', '5', '6', 
+        '7', '8', '9', '10', '11'];
         $('td').hover(function () {
-            var x = parseInt($(this).text());
+            x = parseInt($(this).attr('id'));
             x = (12 - x) % 12;
-            $('#' + x.toString()).toggleClass('symmetry');
+            $('#' + x.toString()).addClass('symmetry');
+            for(let i=0; i<12; i++){
+                let offset = (x+i)%12;
+                $('#'+i.toString()).text(ground[offset]);
+            }
+        },
+        function(){
+            $('#' + x.toString()).removeClass('symmetry');
+            for(let i=0; i<12; i++){
+                $('#'+i.toString()).text(init[i]);
+            }
         });
     });
 </script>
@@ -70,8 +83,10 @@
 
     .symmetry {
         position: relative;
+        background-color: gold;
     }
-    .symmetry:after{
+
+    /* .symmetry:after {
         content: '';
         position: absolute;
         top: 0;
@@ -81,7 +96,7 @@
         z-index: 1;
         background-color: gold;
         opacity: .6;
-    }
+    } */
 </style>
 
 </html>
